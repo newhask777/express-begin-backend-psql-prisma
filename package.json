@@ -19,8 +19,12 @@
     "prettier": "3.5.3"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "@prisma/client": "^6.7.0",
+    "argon2": "^0.43.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "express-async-handler": "^1.2.0",
     "pg": "^8.15.6",
     "prisma": "^6.7.0"
   }
