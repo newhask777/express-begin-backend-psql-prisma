@@ -143,8 +143,7 @@ exports.Prisma.ExerciseScalarFieldEnum = {
   updatedAt: 'updatedAt',
   name: 'name',
   times: 'times',
-  iconPath: 'iconPath',
-  exerciseLogId: 'exerciseLogId'
+  iconPath: 'iconPath'
 };
 
 exports.Prisma.ExerciseLogScalarFieldEnum = {
@@ -153,7 +152,8 @@ exports.Prisma.ExerciseLogScalarFieldEnum = {
   updatedAt: 'updatedAt',
   isCompleted: 'isCompleted',
   userId: 'userId',
-  workoutLogId: 'workoutLogId'
+  workoutLogId: 'workoutLogId',
+  exerciseId: 'exerciseId'
 };
 
 exports.Prisma.ExerciseTimeScalarFieldEnum = {

@@ -1405,10 +1405,12 @@ export namespace Prisma {
 
   export type ExerciseCountOutputType = {
     workouts: number
+    exerciseLogs: number
   }
 
   export type ExerciseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     workouts?: boolean | ExerciseCountOutputTypeCountWorkoutsArgs
+    exerciseLogs?: boolean | ExerciseCountOutputTypeCountExerciseLogsArgs
   }
 
   // Custom InputTypes
@@ -1429,6 +1431,13 @@ export namespace Prisma {
     where?: WorkoutWhereInput
   }
 
+  /**
+   * ExerciseCountOutputType without action
+   */
+  export type ExerciseCountOutputTypeCountExerciseLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExerciseLogWhereInput
+  }
+
 
   /**
    * Count Type ExerciseLogCountOutputType
@@ -1436,12 +1445,10 @@ export namespace Prisma {
 
   export type ExerciseLogCountOutputType = {
     times: number
-    exercise: number
   }
 
   export type ExerciseLogCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     times?: boolean | ExerciseLogCountOutputTypeCountTimesArgs
-    exercise?: boolean | ExerciseLogCountOutputTypeCountExerciseArgs
   }
 
   // Custom InputTypes
@@ -1460,13 +1467,6 @@ export namespace Prisma {
    */
   export type ExerciseLogCountOutputTypeCountTimesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ExerciseTimeWhereInput
-  }
-
-  /**
-   * ExerciseLogCountOutputType without action
-   */
-  export type ExerciseLogCountOutputTypeCountExerciseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ExerciseWhereInput
   }
 
 
@@ -3793,13 +3793,11 @@ export namespace Prisma {
   export type ExerciseAvgAggregateOutputType = {
     id: number | null
     times: number | null
-    exerciseLogId: number | null
   }
 
   export type ExerciseSumAggregateOutputType = {
     id: number | null
     times: number | null
-    exerciseLogId: number | null
   }
 
   export type ExerciseMinAggregateOutputType = {
@@ -3809,7 +3807,6 @@ export namespace Prisma {
     name: string | null
     times: number | null
     iconPath: string | null
-    exerciseLogId: number | null
   }
 
   export type ExerciseMaxAggregateOutputType = {
@@ -3819,7 +3816,6 @@ export namespace Prisma {
     name: string | null
     times: number | null
     iconPath: string | null
-    exerciseLogId: number | null
   }
 
   export type ExerciseCountAggregateOutputType = {
@@ -3829,7 +3825,6 @@ export namespace Prisma {
     name: number
     times: number
     iconPath: number
-    exerciseLogId: number
     _all: number
   }
 
@@ -3837,13 +3832,11 @@ export namespace Prisma {
   export type ExerciseAvgAggregateInputType = {
     id?: true
     times?: true
-    exerciseLogId?: true
   }
 
   export type ExerciseSumAggregateInputType = {
     id?: true
     times?: true
-    exerciseLogId?: true
   }
 
   export type ExerciseMinAggregateInputType = {
@@ -3853,7 +3846,6 @@ export namespace Prisma {
     name?: true
     times?: true
     iconPath?: true
-    exerciseLogId?: true
   }
 
   export type ExerciseMaxAggregateInputType = {
@@ -3863,7 +3855,6 @@ export namespace Prisma {
     name?: true
     times?: true
     iconPath?: true
-    exerciseLogId?: true
   }
 
   export type ExerciseCountAggregateInputType = {
@@ -3873,7 +3864,6 @@ export namespace Prisma {
     name?: true
     times?: true
     iconPath?: true
-    exerciseLogId?: true
     _all?: true
   }
 
@@ -3970,7 +3960,6 @@ export namespace Prisma {
     name: string
     times: number
     iconPath: string
-    exerciseLogId: number | null
     _count: ExerciseCountAggregateOutputType | null
     _avg: ExerciseAvgAggregateOutputType | null
     _sum: ExerciseSumAggregateOutputType | null
@@ -3999,9 +3988,8 @@ export namespace Prisma {
     name?: boolean
     times?: boolean
     iconPath?: boolean
-    exerciseLogId?: boolean
     workouts?: boolean | Exercise$workoutsArgs<ExtArgs>
-    exerciseLog?: boolean | Exercise$exerciseLogArgs<ExtArgs>
+    exerciseLogs?: boolean | Exercise$exerciseLogsArgs<ExtArgs>
     _count?: boolean | ExerciseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["exercise"]>
 
@@ -4012,8 +4000,6 @@ export namespace Prisma {
     name?: boolean
     times?: boolean
     iconPath?: boolean
-    exerciseLogId?: boolean
-    exerciseLog?: boolean | Exercise$exerciseLogArgs<ExtArgs>
   }, ExtArgs["result"]["exercise"]>
 
   export type ExerciseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4023,8 +4009,6 @@ export namespace Prisma {
     name?: boolean
     times?: boolean
     iconPath?: boolean
-    exerciseLogId?: boolean
-    exerciseLog?: boolean | Exercise$exerciseLogArgs<ExtArgs>
   }, ExtArgs["result"]["exercise"]>
 
   export type ExerciseSelectScalar = {
@@ -4034,27 +4018,22 @@ export namespace Prisma {
     name?: boolean
     times?: boolean
     iconPath?: boolean
-    exerciseLogId?: boolean
   }
 
-  export type ExerciseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "name" | "times" | "iconPath" | "exerciseLogId", ExtArgs["result"]["exercise"]>
+  export type ExerciseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "name" | "times" | "iconPath", ExtArgs["result"]["exercise"]>
   export type ExerciseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     workouts?: boolean | Exercise$workoutsArgs<ExtArgs>
-    exerciseLog?: boolean | Exercise$exerciseLogArgs<ExtArgs>
+    exerciseLogs?: boolean | Exercise$exerciseLogsArgs<ExtArgs>
     _count?: boolean | ExerciseCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type ExerciseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    exerciseLog?: boolean | Exercise$exerciseLogArgs<ExtArgs>
-  }
-  export type ExerciseIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    exerciseLog?: boolean | Exercise$exerciseLogArgs<ExtArgs>
-  }
+  export type ExerciseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ExerciseIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $ExercisePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Exercise"
     objects: {
       workouts: Prisma.$WorkoutPayload<ExtArgs>[]
-      exerciseLog: Prisma.$ExerciseLogPayload<ExtArgs> | null
+      exerciseLogs: Prisma.$ExerciseLogPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4063,7 +4042,6 @@ export namespace Prisma {
       name: string
       times: number
       iconPath: string
-      exerciseLogId: number | null
     }, ExtArgs["result"]["exercise"]>
     composites: {}
   }
@@ -4459,7 +4437,7 @@ export namespace Prisma {
   export interface Prisma__ExerciseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     workouts<T extends Exercise$workoutsArgs<ExtArgs> = {}>(args?: Subset<T, Exercise$workoutsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkoutPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    exerciseLog<T extends Exercise$exerciseLogArgs<ExtArgs> = {}>(args?: Subset<T, Exercise$exerciseLogArgs<ExtArgs>>): Prisma__ExerciseLogClient<$Result.GetResult<Prisma.$ExerciseLogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    exerciseLogs<T extends Exercise$exerciseLogsArgs<ExtArgs> = {}>(args?: Subset<T, Exercise$exerciseLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExerciseLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4495,7 +4473,6 @@ export namespace Prisma {
     readonly name: FieldRef<"Exercise", 'String'>
     readonly times: FieldRef<"Exercise", 'Int'>
     readonly iconPath: FieldRef<"Exercise", 'String'>
-    readonly exerciseLogId: FieldRef<"Exercise", 'Int'>
   }
     
 
@@ -4745,10 +4722,6 @@ export namespace Prisma {
      */
     data: ExerciseCreateManyInput | ExerciseCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ExerciseIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4819,10 +4792,6 @@ export namespace Prisma {
      * Limit how many Exercises to update.
      */
     limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ExerciseIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4916,9 +4885,9 @@ export namespace Prisma {
   }
 
   /**
-   * Exercise.exerciseLog
+   * Exercise.exerciseLogs
    */
-  export type Exercise$exerciseLogArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Exercise$exerciseLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ExerciseLog
      */
@@ -4932,6 +4901,11 @@ export namespace Prisma {
      */
     include?: ExerciseLogInclude<ExtArgs> | null
     where?: ExerciseLogWhereInput
+    orderBy?: ExerciseLogOrderByWithRelationInput | ExerciseLogOrderByWithRelationInput[]
+    cursor?: ExerciseLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ExerciseLogScalarFieldEnum | ExerciseLogScalarFieldEnum[]
   }
 
   /**
@@ -4969,12 +4943,14 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     workoutLogId: number | null
+    exerciseId: number | null
   }
 
   export type ExerciseLogSumAggregateOutputType = {
     id: number | null
     userId: number | null
     workoutLogId: number | null
+    exerciseId: number | null
   }
 
   export type ExerciseLogMinAggregateOutputType = {
@@ -4984,6 +4960,7 @@ export namespace Prisma {
     isCompleted: boolean | null
     userId: number | null
     workoutLogId: number | null
+    exerciseId: number | null
   }
 
   export type ExerciseLogMaxAggregateOutputType = {
@@ -4993,6 +4970,7 @@ export namespace Prisma {
     isCompleted: boolean | null
     userId: number | null
     workoutLogId: number | null
+    exerciseId: number | null
   }
 
   export type ExerciseLogCountAggregateOutputType = {
@@ -5002,6 +4980,7 @@ export namespace Prisma {
     isCompleted: number
     userId: number
     workoutLogId: number
+    exerciseId: number
     _all: number
   }
 
@@ -5010,12 +4989,14 @@ export namespace Prisma {
     id?: true
     userId?: true
     workoutLogId?: true
+    exerciseId?: true
   }
 
   export type ExerciseLogSumAggregateInputType = {
     id?: true
     userId?: true
     workoutLogId?: true
+    exerciseId?: true
   }
 
   export type ExerciseLogMinAggregateInputType = {
@@ -5025,6 +5006,7 @@ export namespace Prisma {
     isCompleted?: true
     userId?: true
     workoutLogId?: true
+    exerciseId?: true
   }
 
   export type ExerciseLogMaxAggregateInputType = {
@@ -5034,6 +5016,7 @@ export namespace Prisma {
     isCompleted?: true
     userId?: true
     workoutLogId?: true
+    exerciseId?: true
   }
 
   export type ExerciseLogCountAggregateInputType = {
@@ -5043,6 +5026,7 @@ export namespace Prisma {
     isCompleted?: true
     userId?: true
     workoutLogId?: true
+    exerciseId?: true
     _all?: true
   }
 
@@ -5139,6 +5123,7 @@ export namespace Prisma {
     isCompleted: boolean
     userId: number | null
     workoutLogId: number | null
+    exerciseId: number | null
     _count: ExerciseLogCountAggregateOutputType | null
     _avg: ExerciseLogAvgAggregateOutputType | null
     _sum: ExerciseLogSumAggregateOutputType | null
@@ -5167,6 +5152,7 @@ export namespace Prisma {
     isCompleted?: boolean
     userId?: boolean
     workoutLogId?: boolean
+    exerciseId?: boolean
     times?: boolean | ExerciseLog$timesArgs<ExtArgs>
     user?: boolean | ExerciseLog$userArgs<ExtArgs>
     workoutLog?: boolean | ExerciseLog$workoutLogArgs<ExtArgs>
@@ -5181,8 +5167,10 @@ export namespace Prisma {
     isCompleted?: boolean
     userId?: boolean
     workoutLogId?: boolean
+    exerciseId?: boolean
     user?: boolean | ExerciseLog$userArgs<ExtArgs>
     workoutLog?: boolean | ExerciseLog$workoutLogArgs<ExtArgs>
+    exercise?: boolean | ExerciseLog$exerciseArgs<ExtArgs>
   }, ExtArgs["result"]["exerciseLog"]>
 
   export type ExerciseLogSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -5192,8 +5180,10 @@ export namespace Prisma {
     isCompleted?: boolean
     userId?: boolean
     workoutLogId?: boolean
+    exerciseId?: boolean
     user?: boolean | ExerciseLog$userArgs<ExtArgs>
     workoutLog?: boolean | ExerciseLog$workoutLogArgs<ExtArgs>
+    exercise?: boolean | ExerciseLog$exerciseArgs<ExtArgs>
   }, ExtArgs["result"]["exerciseLog"]>
 
   export type ExerciseLogSelectScalar = {
@@ -5203,9 +5193,10 @@ export namespace Prisma {
     isCompleted?: boolean
     userId?: boolean
     workoutLogId?: boolean
+    exerciseId?: boolean
   }
 
-  export type ExerciseLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "isCompleted" | "userId" | "workoutLogId", ExtArgs["result"]["exerciseLog"]>
+  export type ExerciseLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "isCompleted" | "userId" | "workoutLogId" | "exerciseId", ExtArgs["result"]["exerciseLog"]>
   export type ExerciseLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     times?: boolean | ExerciseLog$timesArgs<ExtArgs>
     user?: boolean | ExerciseLog$userArgs<ExtArgs>
@@ -5216,10 +5207,12 @@ export namespace Prisma {
   export type ExerciseLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | ExerciseLog$userArgs<ExtArgs>
     workoutLog?: boolean | ExerciseLog$workoutLogArgs<ExtArgs>
+    exercise?: boolean | ExerciseLog$exerciseArgs<ExtArgs>
   }
   export type ExerciseLogIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | ExerciseLog$userArgs<ExtArgs>
     workoutLog?: boolean | ExerciseLog$workoutLogArgs<ExtArgs>
+    exercise?: boolean | ExerciseLog$exerciseArgs<ExtArgs>
   }
 
   export type $ExerciseLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5228,7 +5221,7 @@ export namespace Prisma {
       times: Prisma.$ExerciseTimePayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs> | null
       workoutLog: Prisma.$WorkoutLogPayload<ExtArgs> | null
-      exercise: Prisma.$ExercisePayload<ExtArgs>[]
+      exercise: Prisma.$ExercisePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5237,6 +5230,7 @@ export namespace Prisma {
       isCompleted: boolean
       userId: number | null
       workoutLogId: number | null
+      exerciseId: number | null
     }, ExtArgs["result"]["exerciseLog"]>
     composites: {}
   }
@@ -5634,7 +5628,7 @@ export namespace Prisma {
     times<T extends ExerciseLog$timesArgs<ExtArgs> = {}>(args?: Subset<T, ExerciseLog$timesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExerciseTimePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user<T extends ExerciseLog$userArgs<ExtArgs> = {}>(args?: Subset<T, ExerciseLog$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     workoutLog<T extends ExerciseLog$workoutLogArgs<ExtArgs> = {}>(args?: Subset<T, ExerciseLog$workoutLogArgs<ExtArgs>>): Prisma__WorkoutLogClient<$Result.GetResult<Prisma.$WorkoutLogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    exercise<T extends ExerciseLog$exerciseArgs<ExtArgs> = {}>(args?: Subset<T, ExerciseLog$exerciseArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExercisePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    exercise<T extends ExerciseLog$exerciseArgs<ExtArgs> = {}>(args?: Subset<T, ExerciseLog$exerciseArgs<ExtArgs>>): Prisma__ExerciseClient<$Result.GetResult<Prisma.$ExercisePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5670,6 +5664,7 @@ export namespace Prisma {
     readonly isCompleted: FieldRef<"ExerciseLog", 'Boolean'>
     readonly userId: FieldRef<"ExerciseLog", 'Int'>
     readonly workoutLogId: FieldRef<"ExerciseLog", 'Int'>
+    readonly exerciseId: FieldRef<"ExerciseLog", 'Int'>
   }
     
 
@@ -6144,11 +6139,6 @@ export namespace Prisma {
      */
     include?: ExerciseInclude<ExtArgs> | null
     where?: ExerciseWhereInput
-    orderBy?: ExerciseOrderByWithRelationInput | ExerciseOrderByWithRelationInput[]
-    cursor?: ExerciseWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: ExerciseScalarFieldEnum | ExerciseScalarFieldEnum[]
   }
 
   /**
@@ -8551,8 +8541,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     name: 'name',
     times: 'times',
-    iconPath: 'iconPath',
-    exerciseLogId: 'exerciseLogId'
+    iconPath: 'iconPath'
   };
 
   export type ExerciseScalarFieldEnum = (typeof ExerciseScalarFieldEnum)[keyof typeof ExerciseScalarFieldEnum]
@@ -8564,7 +8553,8 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     isCompleted: 'isCompleted',
     userId: 'userId',
-    workoutLogId: 'workoutLogId'
+    workoutLogId: 'workoutLogId',
+    exerciseId: 'exerciseId'
   };
 
   export type ExerciseLogScalarFieldEnum = (typeof ExerciseLogScalarFieldEnum)[keyof typeof ExerciseLogScalarFieldEnum]
@@ -8825,9 +8815,8 @@ export namespace Prisma {
     name?: StringFilter<"Exercise"> | string
     times?: IntFilter<"Exercise"> | number
     iconPath?: StringFilter<"Exercise"> | string
-    exerciseLogId?: IntNullableFilter<"Exercise"> | number | null
     workouts?: WorkoutListRelationFilter
-    exerciseLog?: XOR<ExerciseLogNullableScalarRelationFilter, ExerciseLogWhereInput> | null
+    exerciseLogs?: ExerciseLogListRelationFilter
   }
 
   export type ExerciseOrderByWithRelationInput = {
@@ -8837,9 +8826,8 @@ export namespace Prisma {
     name?: SortOrder
     times?: SortOrder
     iconPath?: SortOrder
-    exerciseLogId?: SortOrderInput | SortOrder
     workouts?: WorkoutOrderByRelationAggregateInput
-    exerciseLog?: ExerciseLogOrderByWithRelationInput
+    exerciseLogs?: ExerciseLogOrderByRelationAggregateInput
   }
 
   export type ExerciseWhereUniqueInput = Prisma.AtLeast<{
@@ -8852,9 +8840,8 @@ export namespace Prisma {
     name?: StringFilter<"Exercise"> | string
     times?: IntFilter<"Exercise"> | number
     iconPath?: StringFilter<"Exercise"> | string
-    exerciseLogId?: IntNullableFilter<"Exercise"> | number | null
     workouts?: WorkoutListRelationFilter
-    exerciseLog?: XOR<ExerciseLogNullableScalarRelationFilter, ExerciseLogWhereInput> | null
+    exerciseLogs?: ExerciseLogListRelationFilter
   }, "id">
 
   export type ExerciseOrderByWithAggregationInput = {
@@ -8864,7 +8851,6 @@ export namespace Prisma {
     name?: SortOrder
     times?: SortOrder
     iconPath?: SortOrder
-    exerciseLogId?: SortOrderInput | SortOrder
     _count?: ExerciseCountOrderByAggregateInput
     _avg?: ExerciseAvgOrderByAggregateInput
     _max?: ExerciseMaxOrderByAggregateInput
@@ -8882,7 +8868,6 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Exercise"> | string
     times?: IntWithAggregatesFilter<"Exercise"> | number
     iconPath?: StringWithAggregatesFilter<"Exercise"> | string
-    exerciseLogId?: IntNullableWithAggregatesFilter<"Exercise"> | number | null
   }
 
   export type ExerciseLogWhereInput = {
@@ -8895,10 +8880,11 @@ export namespace Prisma {
     isCompleted?: BoolFilter<"ExerciseLog"> | boolean
     userId?: IntNullableFilter<"ExerciseLog"> | number | null
     workoutLogId?: IntNullableFilter<"ExerciseLog"> | number | null
+    exerciseId?: IntNullableFilter<"ExerciseLog"> | number | null
     times?: ExerciseTimeListRelationFilter
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     workoutLog?: XOR<WorkoutLogNullableScalarRelationFilter, WorkoutLogWhereInput> | null
-    exercise?: ExerciseListRelationFilter
+    exercise?: XOR<ExerciseNullableScalarRelationFilter, ExerciseWhereInput> | null
   }
 
   export type ExerciseLogOrderByWithRelationInput = {
@@ -8908,10 +8894,11 @@ export namespace Prisma {
     isCompleted?: SortOrder
     userId?: SortOrderInput | SortOrder
     workoutLogId?: SortOrderInput | SortOrder
+    exerciseId?: SortOrderInput | SortOrder
     times?: ExerciseTimeOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
     workoutLog?: WorkoutLogOrderByWithRelationInput
-    exercise?: ExerciseOrderByRelationAggregateInput
+    exercise?: ExerciseOrderByWithRelationInput
   }
 
   export type ExerciseLogWhereUniqueInput = Prisma.AtLeast<{
@@ -8924,10 +8911,11 @@ export namespace Prisma {
     isCompleted?: BoolFilter<"ExerciseLog"> | boolean
     userId?: IntNullableFilter<"ExerciseLog"> | number | null
     workoutLogId?: IntNullableFilter<"ExerciseLog"> | number | null
+    exerciseId?: IntNullableFilter<"ExerciseLog"> | number | null
     times?: ExerciseTimeListRelationFilter
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     workoutLog?: XOR<WorkoutLogNullableScalarRelationFilter, WorkoutLogWhereInput> | null
-    exercise?: ExerciseListRelationFilter
+    exercise?: XOR<ExerciseNullableScalarRelationFilter, ExerciseWhereInput> | null
   }, "id">
 
   export type ExerciseLogOrderByWithAggregationInput = {
@@ -8937,6 +8925,7 @@ export namespace Prisma {
     isCompleted?: SortOrder
     userId?: SortOrderInput | SortOrder
     workoutLogId?: SortOrderInput | SortOrder
+    exerciseId?: SortOrderInput | SortOrder
     _count?: ExerciseLogCountOrderByAggregateInput
     _avg?: ExerciseLogAvgOrderByAggregateInput
     _max?: ExerciseLogMaxOrderByAggregateInput
@@ -8954,6 +8943,7 @@ export namespace Prisma {
     isCompleted?: BoolWithAggregatesFilter<"ExerciseLog"> | boolean
     userId?: IntNullableWithAggregatesFilter<"ExerciseLog"> | number | null
     workoutLogId?: IntNullableWithAggregatesFilter<"ExerciseLog"> | number | null
+    exerciseId?: IntNullableWithAggregatesFilter<"ExerciseLog"> | number | null
   }
 
   export type ExerciseTimeWhereInput = {
@@ -9227,7 +9217,7 @@ export namespace Prisma {
     times: number
     iconPath: string
     workouts?: WorkoutCreateNestedManyWithoutExercisesInput
-    exerciseLog?: ExerciseLogCreateNestedOneWithoutExerciseInput
+    exerciseLogs?: ExerciseLogCreateNestedManyWithoutExerciseInput
   }
 
   export type ExerciseUncheckedCreateInput = {
@@ -9237,8 +9227,8 @@ export namespace Prisma {
     name: string
     times: number
     iconPath: string
-    exerciseLogId?: number | null
     workouts?: WorkoutUncheckedCreateNestedManyWithoutExercisesInput
+    exerciseLogs?: ExerciseLogUncheckedCreateNestedManyWithoutExerciseInput
   }
 
   export type ExerciseUpdateInput = {
@@ -9248,7 +9238,7 @@ export namespace Prisma {
     times?: IntFieldUpdateOperationsInput | number
     iconPath?: StringFieldUpdateOperationsInput | string
     workouts?: WorkoutUpdateManyWithoutExercisesNestedInput
-    exerciseLog?: ExerciseLogUpdateOneWithoutExerciseNestedInput
+    exerciseLogs?: ExerciseLogUpdateManyWithoutExerciseNestedInput
   }
 
   export type ExerciseUncheckedUpdateInput = {
@@ -9258,8 +9248,8 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     times?: IntFieldUpdateOperationsInput | number
     iconPath?: StringFieldUpdateOperationsInput | string
-    exerciseLogId?: NullableIntFieldUpdateOperationsInput | number | null
     workouts?: WorkoutUncheckedUpdateManyWithoutExercisesNestedInput
+    exerciseLogs?: ExerciseLogUncheckedUpdateManyWithoutExerciseNestedInput
   }
 
   export type ExerciseCreateManyInput = {
@@ -9269,7 +9259,6 @@ export namespace Prisma {
     name: string
     times: number
     iconPath: string
-    exerciseLogId?: number | null
   }
 
   export type ExerciseUpdateManyMutationInput = {
@@ -9287,7 +9276,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     times?: IntFieldUpdateOperationsInput | number
     iconPath?: StringFieldUpdateOperationsInput | string
-    exerciseLogId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ExerciseLogCreateInput = {
@@ -9297,7 +9285,7 @@ export namespace Prisma {
     times?: ExerciseTimeCreateNestedManyWithoutExerciseLogInput
     user?: UserCreateNestedOneWithoutExerciseLogsInput
     workoutLog?: WorkoutLogCreateNestedOneWithoutExerciseLogsInput
-    exercise?: ExerciseCreateNestedManyWithoutExerciseLogInput
+    exercise?: ExerciseCreateNestedOneWithoutExerciseLogsInput
   }
 
   export type ExerciseLogUncheckedCreateInput = {
@@ -9307,8 +9295,8 @@ export namespace Prisma {
     isCompleted?: boolean
     userId?: number | null
     workoutLogId?: number | null
+    exerciseId?: number | null
     times?: ExerciseTimeUncheckedCreateNestedManyWithoutExerciseLogInput
-    exercise?: ExerciseUncheckedCreateNestedManyWithoutExerciseLogInput
   }
 
   export type ExerciseLogUpdateInput = {
@@ -9318,7 +9306,7 @@ export namespace Prisma {
     times?: ExerciseTimeUpdateManyWithoutExerciseLogNestedInput
     user?: UserUpdateOneWithoutExerciseLogsNestedInput
     workoutLog?: WorkoutLogUpdateOneWithoutExerciseLogsNestedInput
-    exercise?: ExerciseUpdateManyWithoutExerciseLogNestedInput
+    exercise?: ExerciseUpdateOneWithoutExerciseLogsNestedInput
   }
 
   export type ExerciseLogUncheckedUpdateInput = {
@@ -9328,8 +9316,8 @@ export namespace Prisma {
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     workoutLogId?: NullableIntFieldUpdateOperationsInput | number | null
+    exerciseId?: NullableIntFieldUpdateOperationsInput | number | null
     times?: ExerciseTimeUncheckedUpdateManyWithoutExerciseLogNestedInput
-    exercise?: ExerciseUncheckedUpdateManyWithoutExerciseLogNestedInput
   }
 
   export type ExerciseLogCreateManyInput = {
@@ -9339,6 +9327,7 @@ export namespace Prisma {
     isCompleted?: boolean
     userId?: number | null
     workoutLogId?: number | null
+    exerciseId?: number | null
   }
 
   export type ExerciseLogUpdateManyMutationInput = {
@@ -9354,6 +9343,7 @@ export namespace Prisma {
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     workoutLogId?: NullableIntFieldUpdateOperationsInput | number | null
+    exerciseId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ExerciseTimeCreateInput = {
@@ -9672,31 +9662,10 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
   export type WorkoutListRelationFilter = {
     every?: WorkoutWhereInput
     some?: WorkoutWhereInput
     none?: WorkoutWhereInput
-  }
-
-  export type ExerciseLogNullableScalarRelationFilter = {
-    is?: ExerciseLogWhereInput | null
-    isNot?: ExerciseLogWhereInput | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type WorkoutOrderByRelationAggregateInput = {
@@ -9710,13 +9679,11 @@ export namespace Prisma {
     name?: SortOrder
     times?: SortOrder
     iconPath?: SortOrder
-    exerciseLogId?: SortOrder
   }
 
   export type ExerciseAvgOrderByAggregateInput = {
     id?: SortOrder
     times?: SortOrder
-    exerciseLogId?: SortOrder
   }
 
   export type ExerciseMaxOrderByAggregateInput = {
@@ -9726,7 +9693,6 @@ export namespace Prisma {
     name?: SortOrder
     times?: SortOrder
     iconPath?: SortOrder
-    exerciseLogId?: SortOrder
   }
 
   export type ExerciseMinOrderByAggregateInput = {
@@ -9736,16 +9702,19 @@ export namespace Prisma {
     name?: SortOrder
     times?: SortOrder
     iconPath?: SortOrder
-    exerciseLogId?: SortOrder
   }
 
   export type ExerciseSumOrderByAggregateInput = {
     id?: SortOrder
     times?: SortOrder
-    exerciseLogId?: SortOrder
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -9753,17 +9722,7 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type ExerciseTimeListRelationFilter = {
@@ -9782,6 +9741,16 @@ export namespace Prisma {
     isNot?: WorkoutLogWhereInput | null
   }
 
+  export type ExerciseNullableScalarRelationFilter = {
+    is?: ExerciseWhereInput | null
+    isNot?: ExerciseWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type ExerciseTimeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -9793,12 +9762,14 @@ export namespace Prisma {
     isCompleted?: SortOrder
     userId?: SortOrder
     workoutLogId?: SortOrder
+    exerciseId?: SortOrder
   }
 
   export type ExerciseLogAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     workoutLogId?: SortOrder
+    exerciseId?: SortOrder
   }
 
   export type ExerciseLogMaxOrderByAggregateInput = {
@@ -9808,6 +9779,7 @@ export namespace Prisma {
     isCompleted?: SortOrder
     userId?: SortOrder
     workoutLogId?: SortOrder
+    exerciseId?: SortOrder
   }
 
   export type ExerciseLogMinOrderByAggregateInput = {
@@ -9817,12 +9789,14 @@ export namespace Prisma {
     isCompleted?: SortOrder
     userId?: SortOrder
     workoutLogId?: SortOrder
+    exerciseId?: SortOrder
   }
 
   export type ExerciseLogSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     workoutLogId?: SortOrder
+    exerciseId?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -9831,6 +9805,27 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type ExerciseLogNullableScalarRelationFilter = {
+    is?: ExerciseLogWhereInput | null
+    isNot?: ExerciseLogWhereInput | null
   }
 
   export type ExerciseTimeCountOrderByAggregateInput = {
@@ -10116,16 +10111,24 @@ export namespace Prisma {
     connect?: WorkoutWhereUniqueInput | WorkoutWhereUniqueInput[]
   }
 
-  export type ExerciseLogCreateNestedOneWithoutExerciseInput = {
-    create?: XOR<ExerciseLogCreateWithoutExerciseInput, ExerciseLogUncheckedCreateWithoutExerciseInput>
-    connectOrCreate?: ExerciseLogCreateOrConnectWithoutExerciseInput
-    connect?: ExerciseLogWhereUniqueInput
+  export type ExerciseLogCreateNestedManyWithoutExerciseInput = {
+    create?: XOR<ExerciseLogCreateWithoutExerciseInput, ExerciseLogUncheckedCreateWithoutExerciseInput> | ExerciseLogCreateWithoutExerciseInput[] | ExerciseLogUncheckedCreateWithoutExerciseInput[]
+    connectOrCreate?: ExerciseLogCreateOrConnectWithoutExerciseInput | ExerciseLogCreateOrConnectWithoutExerciseInput[]
+    createMany?: ExerciseLogCreateManyExerciseInputEnvelope
+    connect?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
   }
 
   export type WorkoutUncheckedCreateNestedManyWithoutExercisesInput = {
     create?: XOR<WorkoutCreateWithoutExercisesInput, WorkoutUncheckedCreateWithoutExercisesInput> | WorkoutCreateWithoutExercisesInput[] | WorkoutUncheckedCreateWithoutExercisesInput[]
     connectOrCreate?: WorkoutCreateOrConnectWithoutExercisesInput | WorkoutCreateOrConnectWithoutExercisesInput[]
     connect?: WorkoutWhereUniqueInput | WorkoutWhereUniqueInput[]
+  }
+
+  export type ExerciseLogUncheckedCreateNestedManyWithoutExerciseInput = {
+    create?: XOR<ExerciseLogCreateWithoutExerciseInput, ExerciseLogUncheckedCreateWithoutExerciseInput> | ExerciseLogCreateWithoutExerciseInput[] | ExerciseLogUncheckedCreateWithoutExerciseInput[]
+    connectOrCreate?: ExerciseLogCreateOrConnectWithoutExerciseInput | ExerciseLogCreateOrConnectWithoutExerciseInput[]
+    createMany?: ExerciseLogCreateManyExerciseInputEnvelope
+    connect?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
   }
 
   export type WorkoutUpdateManyWithoutExercisesNestedInput = {
@@ -10141,22 +10144,18 @@ export namespace Prisma {
     deleteMany?: WorkoutScalarWhereInput | WorkoutScalarWhereInput[]
   }
 
-  export type ExerciseLogUpdateOneWithoutExerciseNestedInput = {
-    create?: XOR<ExerciseLogCreateWithoutExerciseInput, ExerciseLogUncheckedCreateWithoutExerciseInput>
-    connectOrCreate?: ExerciseLogCreateOrConnectWithoutExerciseInput
-    upsert?: ExerciseLogUpsertWithoutExerciseInput
-    disconnect?: ExerciseLogWhereInput | boolean
-    delete?: ExerciseLogWhereInput | boolean
-    connect?: ExerciseLogWhereUniqueInput
-    update?: XOR<XOR<ExerciseLogUpdateToOneWithWhereWithoutExerciseInput, ExerciseLogUpdateWithoutExerciseInput>, ExerciseLogUncheckedUpdateWithoutExerciseInput>
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type ExerciseLogUpdateManyWithoutExerciseNestedInput = {
+    create?: XOR<ExerciseLogCreateWithoutExerciseInput, ExerciseLogUncheckedCreateWithoutExerciseInput> | ExerciseLogCreateWithoutExerciseInput[] | ExerciseLogUncheckedCreateWithoutExerciseInput[]
+    connectOrCreate?: ExerciseLogCreateOrConnectWithoutExerciseInput | ExerciseLogCreateOrConnectWithoutExerciseInput[]
+    upsert?: ExerciseLogUpsertWithWhereUniqueWithoutExerciseInput | ExerciseLogUpsertWithWhereUniqueWithoutExerciseInput[]
+    createMany?: ExerciseLogCreateManyExerciseInputEnvelope
+    set?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
+    disconnect?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
+    delete?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
+    connect?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
+    update?: ExerciseLogUpdateWithWhereUniqueWithoutExerciseInput | ExerciseLogUpdateWithWhereUniqueWithoutExerciseInput[]
+    updateMany?: ExerciseLogUpdateManyWithWhereWithoutExerciseInput | ExerciseLogUpdateManyWithWhereWithoutExerciseInput[]
+    deleteMany?: ExerciseLogScalarWhereInput | ExerciseLogScalarWhereInput[]
   }
 
   export type WorkoutUncheckedUpdateManyWithoutExercisesNestedInput = {
@@ -10170,6 +10169,20 @@ export namespace Prisma {
     update?: WorkoutUpdateWithWhereUniqueWithoutExercisesInput | WorkoutUpdateWithWhereUniqueWithoutExercisesInput[]
     updateMany?: WorkoutUpdateManyWithWhereWithoutExercisesInput | WorkoutUpdateManyWithWhereWithoutExercisesInput[]
     deleteMany?: WorkoutScalarWhereInput | WorkoutScalarWhereInput[]
+  }
+
+  export type ExerciseLogUncheckedUpdateManyWithoutExerciseNestedInput = {
+    create?: XOR<ExerciseLogCreateWithoutExerciseInput, ExerciseLogUncheckedCreateWithoutExerciseInput> | ExerciseLogCreateWithoutExerciseInput[] | ExerciseLogUncheckedCreateWithoutExerciseInput[]
+    connectOrCreate?: ExerciseLogCreateOrConnectWithoutExerciseInput | ExerciseLogCreateOrConnectWithoutExerciseInput[]
+    upsert?: ExerciseLogUpsertWithWhereUniqueWithoutExerciseInput | ExerciseLogUpsertWithWhereUniqueWithoutExerciseInput[]
+    createMany?: ExerciseLogCreateManyExerciseInputEnvelope
+    set?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
+    disconnect?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
+    delete?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
+    connect?: ExerciseLogWhereUniqueInput | ExerciseLogWhereUniqueInput[]
+    update?: ExerciseLogUpdateWithWhereUniqueWithoutExerciseInput | ExerciseLogUpdateWithWhereUniqueWithoutExerciseInput[]
+    updateMany?: ExerciseLogUpdateManyWithWhereWithoutExerciseInput | ExerciseLogUpdateManyWithWhereWithoutExerciseInput[]
+    deleteMany?: ExerciseLogScalarWhereInput | ExerciseLogScalarWhereInput[]
   }
 
   export type ExerciseTimeCreateNestedManyWithoutExerciseLogInput = {
@@ -10191,11 +10204,10 @@ export namespace Prisma {
     connect?: WorkoutLogWhereUniqueInput
   }
 
-  export type ExerciseCreateNestedManyWithoutExerciseLogInput = {
-    create?: XOR<ExerciseCreateWithoutExerciseLogInput, ExerciseUncheckedCreateWithoutExerciseLogInput> | ExerciseCreateWithoutExerciseLogInput[] | ExerciseUncheckedCreateWithoutExerciseLogInput[]
-    connectOrCreate?: ExerciseCreateOrConnectWithoutExerciseLogInput | ExerciseCreateOrConnectWithoutExerciseLogInput[]
-    createMany?: ExerciseCreateManyExerciseLogInputEnvelope
-    connect?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
+  export type ExerciseCreateNestedOneWithoutExerciseLogsInput = {
+    create?: XOR<ExerciseCreateWithoutExerciseLogsInput, ExerciseUncheckedCreateWithoutExerciseLogsInput>
+    connectOrCreate?: ExerciseCreateOrConnectWithoutExerciseLogsInput
+    connect?: ExerciseWhereUniqueInput
   }
 
   export type ExerciseTimeUncheckedCreateNestedManyWithoutExerciseLogInput = {
@@ -10203,13 +10215,6 @@ export namespace Prisma {
     connectOrCreate?: ExerciseTimeCreateOrConnectWithoutExerciseLogInput | ExerciseTimeCreateOrConnectWithoutExerciseLogInput[]
     createMany?: ExerciseTimeCreateManyExerciseLogInputEnvelope
     connect?: ExerciseTimeWhereUniqueInput | ExerciseTimeWhereUniqueInput[]
-  }
-
-  export type ExerciseUncheckedCreateNestedManyWithoutExerciseLogInput = {
-    create?: XOR<ExerciseCreateWithoutExerciseLogInput, ExerciseUncheckedCreateWithoutExerciseLogInput> | ExerciseCreateWithoutExerciseLogInput[] | ExerciseUncheckedCreateWithoutExerciseLogInput[]
-    connectOrCreate?: ExerciseCreateOrConnectWithoutExerciseLogInput | ExerciseCreateOrConnectWithoutExerciseLogInput[]
-    createMany?: ExerciseCreateManyExerciseLogInputEnvelope
-    connect?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -10250,18 +10255,22 @@ export namespace Prisma {
     update?: XOR<XOR<WorkoutLogUpdateToOneWithWhereWithoutExerciseLogsInput, WorkoutLogUpdateWithoutExerciseLogsInput>, WorkoutLogUncheckedUpdateWithoutExerciseLogsInput>
   }
 
-  export type ExerciseUpdateManyWithoutExerciseLogNestedInput = {
-    create?: XOR<ExerciseCreateWithoutExerciseLogInput, ExerciseUncheckedCreateWithoutExerciseLogInput> | ExerciseCreateWithoutExerciseLogInput[] | ExerciseUncheckedCreateWithoutExerciseLogInput[]
-    connectOrCreate?: ExerciseCreateOrConnectWithoutExerciseLogInput | ExerciseCreateOrConnectWithoutExerciseLogInput[]
-    upsert?: ExerciseUpsertWithWhereUniqueWithoutExerciseLogInput | ExerciseUpsertWithWhereUniqueWithoutExerciseLogInput[]
-    createMany?: ExerciseCreateManyExerciseLogInputEnvelope
-    set?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
-    disconnect?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
-    delete?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
-    connect?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
-    update?: ExerciseUpdateWithWhereUniqueWithoutExerciseLogInput | ExerciseUpdateWithWhereUniqueWithoutExerciseLogInput[]
-    updateMany?: ExerciseUpdateManyWithWhereWithoutExerciseLogInput | ExerciseUpdateManyWithWhereWithoutExerciseLogInput[]
-    deleteMany?: ExerciseScalarWhereInput | ExerciseScalarWhereInput[]
+  export type ExerciseUpdateOneWithoutExerciseLogsNestedInput = {
+    create?: XOR<ExerciseCreateWithoutExerciseLogsInput, ExerciseUncheckedCreateWithoutExerciseLogsInput>
+    connectOrCreate?: ExerciseCreateOrConnectWithoutExerciseLogsInput
+    upsert?: ExerciseUpsertWithoutExerciseLogsInput
+    disconnect?: ExerciseWhereInput | boolean
+    delete?: ExerciseWhereInput | boolean
+    connect?: ExerciseWhereUniqueInput
+    update?: XOR<XOR<ExerciseUpdateToOneWithWhereWithoutExerciseLogsInput, ExerciseUpdateWithoutExerciseLogsInput>, ExerciseUncheckedUpdateWithoutExerciseLogsInput>
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type ExerciseTimeUncheckedUpdateManyWithoutExerciseLogNestedInput = {
@@ -10276,20 +10285,6 @@ export namespace Prisma {
     update?: ExerciseTimeUpdateWithWhereUniqueWithoutExerciseLogInput | ExerciseTimeUpdateWithWhereUniqueWithoutExerciseLogInput[]
     updateMany?: ExerciseTimeUpdateManyWithWhereWithoutExerciseLogInput | ExerciseTimeUpdateManyWithWhereWithoutExerciseLogInput[]
     deleteMany?: ExerciseTimeScalarWhereInput | ExerciseTimeScalarWhereInput[]
-  }
-
-  export type ExerciseUncheckedUpdateManyWithoutExerciseLogNestedInput = {
-    create?: XOR<ExerciseCreateWithoutExerciseLogInput, ExerciseUncheckedCreateWithoutExerciseLogInput> | ExerciseCreateWithoutExerciseLogInput[] | ExerciseUncheckedCreateWithoutExerciseLogInput[]
-    connectOrCreate?: ExerciseCreateOrConnectWithoutExerciseLogInput | ExerciseCreateOrConnectWithoutExerciseLogInput[]
-    upsert?: ExerciseUpsertWithWhereUniqueWithoutExerciseLogInput | ExerciseUpsertWithWhereUniqueWithoutExerciseLogInput[]
-    createMany?: ExerciseCreateManyExerciseLogInputEnvelope
-    set?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
-    disconnect?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
-    delete?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
-    connect?: ExerciseWhereUniqueInput | ExerciseWhereUniqueInput[]
-    update?: ExerciseUpdateWithWhereUniqueWithoutExerciseLogInput | ExerciseUpdateWithWhereUniqueWithoutExerciseLogInput[]
-    updateMany?: ExerciseUpdateManyWithWhereWithoutExerciseLogInput | ExerciseUpdateManyWithWhereWithoutExerciseLogInput[]
-    deleteMany?: ExerciseScalarWhereInput | ExerciseScalarWhereInput[]
   }
 
   export type ExerciseLogCreateNestedOneWithoutTimesInput = {
@@ -10476,6 +10471,11 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -10485,6 +10485,14 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10514,26 +10522,13 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type ExerciseLogCreateWithoutUserInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
     isCompleted?: boolean
     times?: ExerciseTimeCreateNestedManyWithoutExerciseLogInput
     workoutLog?: WorkoutLogCreateNestedOneWithoutExerciseLogsInput
-    exercise?: ExerciseCreateNestedManyWithoutExerciseLogInput
+    exercise?: ExerciseCreateNestedOneWithoutExerciseLogsInput
   }
 
   export type ExerciseLogUncheckedCreateWithoutUserInput = {
@@ -10542,8 +10537,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     isCompleted?: boolean
     workoutLogId?: number | null
+    exerciseId?: number | null
     times?: ExerciseTimeUncheckedCreateNestedManyWithoutExerciseLogInput
-    exercise?: ExerciseUncheckedCreateNestedManyWithoutExerciseLogInput
   }
 
   export type ExerciseLogCreateOrConnectWithoutUserInput = {
@@ -10609,6 +10604,7 @@ export namespace Prisma {
     isCompleted?: BoolFilter<"ExerciseLog"> | boolean
     userId?: IntNullableFilter<"ExerciseLog"> | number | null
     workoutLogId?: IntNullableFilter<"ExerciseLog"> | number | null
+    exerciseId?: IntNullableFilter<"ExerciseLog"> | number | null
   }
 
   export type WorkoutLogUpsertWithWhereUniqueWithoutUserInput = {
@@ -10645,7 +10641,7 @@ export namespace Prisma {
     name: string
     times: number
     iconPath: string
-    exerciseLog?: ExerciseLogCreateNestedOneWithoutExerciseInput
+    exerciseLogs?: ExerciseLogCreateNestedManyWithoutExerciseInput
   }
 
   export type ExerciseUncheckedCreateWithoutWorkoutsInput = {
@@ -10655,7 +10651,7 @@ export namespace Prisma {
     name: string
     times: number
     iconPath: string
-    exerciseLogId?: number | null
+    exerciseLogs?: ExerciseLogUncheckedCreateNestedManyWithoutExerciseInput
   }
 
   export type ExerciseCreateOrConnectWithoutWorkoutsInput = {
@@ -10716,7 +10712,6 @@ export namespace Prisma {
     name?: StringFilter<"Exercise"> | string
     times?: IntFilter<"Exercise"> | number
     iconPath?: StringFilter<"Exercise"> | string
-    exerciseLogId?: IntNullableFilter<"Exercise"> | number | null
   }
 
   export type WorkoutLogUpsertWithWhereUniqueWithoutWorkoutInput = {
@@ -10779,6 +10774,11 @@ export namespace Prisma {
     create: XOR<ExerciseLogCreateWithoutExerciseInput, ExerciseLogUncheckedCreateWithoutExerciseInput>
   }
 
+  export type ExerciseLogCreateManyExerciseInputEnvelope = {
+    data: ExerciseLogCreateManyExerciseInput | ExerciseLogCreateManyExerciseInput[]
+    skipDuplicates?: boolean
+  }
+
   export type WorkoutUpsertWithWhereUniqueWithoutExercisesInput = {
     where: WorkoutWhereUniqueInput
     update: XOR<WorkoutUpdateWithoutExercisesInput, WorkoutUncheckedUpdateWithoutExercisesInput>
@@ -10805,34 +10805,20 @@ export namespace Prisma {
     name?: StringFilter<"Workout"> | string
   }
 
-  export type ExerciseLogUpsertWithoutExerciseInput = {
+  export type ExerciseLogUpsertWithWhereUniqueWithoutExerciseInput = {
+    where: ExerciseLogWhereUniqueInput
     update: XOR<ExerciseLogUpdateWithoutExerciseInput, ExerciseLogUncheckedUpdateWithoutExerciseInput>
     create: XOR<ExerciseLogCreateWithoutExerciseInput, ExerciseLogUncheckedCreateWithoutExerciseInput>
-    where?: ExerciseLogWhereInput
   }
 
-  export type ExerciseLogUpdateToOneWithWhereWithoutExerciseInput = {
-    where?: ExerciseLogWhereInput
+  export type ExerciseLogUpdateWithWhereUniqueWithoutExerciseInput = {
+    where: ExerciseLogWhereUniqueInput
     data: XOR<ExerciseLogUpdateWithoutExerciseInput, ExerciseLogUncheckedUpdateWithoutExerciseInput>
   }
 
-  export type ExerciseLogUpdateWithoutExerciseInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isCompleted?: BoolFieldUpdateOperationsInput | boolean
-    times?: ExerciseTimeUpdateManyWithoutExerciseLogNestedInput
-    user?: UserUpdateOneWithoutExerciseLogsNestedInput
-    workoutLog?: WorkoutLogUpdateOneWithoutExerciseLogsNestedInput
-  }
-
-  export type ExerciseLogUncheckedUpdateWithoutExerciseInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    isCompleted?: BoolFieldUpdateOperationsInput | boolean
-    userId?: NullableIntFieldUpdateOperationsInput | number | null
-    workoutLogId?: NullableIntFieldUpdateOperationsInput | number | null
-    times?: ExerciseTimeUncheckedUpdateManyWithoutExerciseLogNestedInput
+  export type ExerciseLogUpdateManyWithWhereWithoutExerciseInput = {
+    where: ExerciseLogScalarWhereInput
+    data: XOR<ExerciseLogUpdateManyMutationInput, ExerciseLogUncheckedUpdateManyWithoutExerciseInput>
   }
 
   export type ExerciseTimeCreateWithoutExerciseLogInput = {
@@ -10910,7 +10896,7 @@ export namespace Prisma {
     create: XOR<WorkoutLogCreateWithoutExerciseLogsInput, WorkoutLogUncheckedCreateWithoutExerciseLogsInput>
   }
 
-  export type ExerciseCreateWithoutExerciseLogInput = {
+  export type ExerciseCreateWithoutExerciseLogsInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
     name: string
@@ -10919,7 +10905,7 @@ export namespace Prisma {
     workouts?: WorkoutCreateNestedManyWithoutExercisesInput
   }
 
-  export type ExerciseUncheckedCreateWithoutExerciseLogInput = {
+  export type ExerciseUncheckedCreateWithoutExerciseLogsInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -10929,14 +10915,9 @@ export namespace Prisma {
     workouts?: WorkoutUncheckedCreateNestedManyWithoutExercisesInput
   }
 
-  export type ExerciseCreateOrConnectWithoutExerciseLogInput = {
+  export type ExerciseCreateOrConnectWithoutExerciseLogsInput = {
     where: ExerciseWhereUniqueInput
-    create: XOR<ExerciseCreateWithoutExerciseLogInput, ExerciseUncheckedCreateWithoutExerciseLogInput>
-  }
-
-  export type ExerciseCreateManyExerciseLogInputEnvelope = {
-    data: ExerciseCreateManyExerciseLogInput | ExerciseCreateManyExerciseLogInput[]
-    skipDuplicates?: boolean
+    create: XOR<ExerciseCreateWithoutExerciseLogsInput, ExerciseUncheckedCreateWithoutExerciseLogsInput>
   }
 
   export type ExerciseTimeUpsertWithWhereUniqueWithoutExerciseLogInput = {
@@ -11028,20 +11009,34 @@ export namespace Prisma {
     workoutId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type ExerciseUpsertWithWhereUniqueWithoutExerciseLogInput = {
-    where: ExerciseWhereUniqueInput
-    update: XOR<ExerciseUpdateWithoutExerciseLogInput, ExerciseUncheckedUpdateWithoutExerciseLogInput>
-    create: XOR<ExerciseCreateWithoutExerciseLogInput, ExerciseUncheckedCreateWithoutExerciseLogInput>
+  export type ExerciseUpsertWithoutExerciseLogsInput = {
+    update: XOR<ExerciseUpdateWithoutExerciseLogsInput, ExerciseUncheckedUpdateWithoutExerciseLogsInput>
+    create: XOR<ExerciseCreateWithoutExerciseLogsInput, ExerciseUncheckedCreateWithoutExerciseLogsInput>
+    where?: ExerciseWhereInput
   }
 
-  export type ExerciseUpdateWithWhereUniqueWithoutExerciseLogInput = {
-    where: ExerciseWhereUniqueInput
-    data: XOR<ExerciseUpdateWithoutExerciseLogInput, ExerciseUncheckedUpdateWithoutExerciseLogInput>
+  export type ExerciseUpdateToOneWithWhereWithoutExerciseLogsInput = {
+    where?: ExerciseWhereInput
+    data: XOR<ExerciseUpdateWithoutExerciseLogsInput, ExerciseUncheckedUpdateWithoutExerciseLogsInput>
   }
 
-  export type ExerciseUpdateManyWithWhereWithoutExerciseLogInput = {
-    where: ExerciseScalarWhereInput
-    data: XOR<ExerciseUpdateManyMutationInput, ExerciseUncheckedUpdateManyWithoutExerciseLogInput>
+  export type ExerciseUpdateWithoutExerciseLogsInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    times?: IntFieldUpdateOperationsInput | number
+    iconPath?: StringFieldUpdateOperationsInput | string
+    workouts?: WorkoutUpdateManyWithoutExercisesNestedInput
+  }
+
+  export type ExerciseUncheckedUpdateWithoutExerciseLogsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    times?: IntFieldUpdateOperationsInput | number
+    iconPath?: StringFieldUpdateOperationsInput | string
+    workouts?: WorkoutUncheckedUpdateManyWithoutExercisesNestedInput
   }
 
   export type ExerciseLogCreateWithoutTimesInput = {
@@ -11050,7 +11045,7 @@ export namespace Prisma {
     isCompleted?: boolean
     user?: UserCreateNestedOneWithoutExerciseLogsInput
     workoutLog?: WorkoutLogCreateNestedOneWithoutExerciseLogsInput
-    exercise?: ExerciseCreateNestedManyWithoutExerciseLogInput
+    exercise?: ExerciseCreateNestedOneWithoutExerciseLogsInput
   }
 
   export type ExerciseLogUncheckedCreateWithoutTimesInput = {
@@ -11060,7 +11055,7 @@ export namespace Prisma {
     isCompleted?: boolean
     userId?: number | null
     workoutLogId?: number | null
-    exercise?: ExerciseUncheckedCreateNestedManyWithoutExerciseLogInput
+    exerciseId?: number | null
   }
 
   export type ExerciseLogCreateOrConnectWithoutTimesInput = {
@@ -11085,7 +11080,7 @@ export namespace Prisma {
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneWithoutExerciseLogsNestedInput
     workoutLog?: WorkoutLogUpdateOneWithoutExerciseLogsNestedInput
-    exercise?: ExerciseUpdateManyWithoutExerciseLogNestedInput
+    exercise?: ExerciseUpdateOneWithoutExerciseLogsNestedInput
   }
 
   export type ExerciseLogUncheckedUpdateWithoutTimesInput = {
@@ -11095,7 +11090,7 @@ export namespace Prisma {
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: NullableIntFieldUpdateOperationsInput | number | null
     workoutLogId?: NullableIntFieldUpdateOperationsInput | number | null
-    exercise?: ExerciseUncheckedUpdateManyWithoutExerciseLogNestedInput
+    exerciseId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ExerciseLogCreateWithoutWorkoutLogInput = {
@@ -11104,7 +11099,7 @@ export namespace Prisma {
     isCompleted?: boolean
     times?: ExerciseTimeCreateNestedManyWithoutExerciseLogInput
     user?: UserCreateNestedOneWithoutExerciseLogsInput
-    exercise?: ExerciseCreateNestedManyWithoutExerciseLogInput
+    exercise?: ExerciseCreateNestedOneWithoutExerciseLogsInput
   }
 
   export type ExerciseLogUncheckedCreateWithoutWorkoutLogInput = {
@@ -11113,8 +11108,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     isCompleted?: boolean
     userId?: number | null
+    exerciseId?: number | null
     times?: ExerciseTimeUncheckedCreateNestedManyWithoutExerciseLogInput
-    exercise?: ExerciseUncheckedCreateNestedManyWithoutExerciseLogInput
   }
 
   export type ExerciseLogCreateOrConnectWithoutWorkoutLogInput = {
@@ -11253,6 +11248,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     isCompleted?: boolean
     workoutLogId?: number | null
+    exerciseId?: number | null
   }
 
   export type WorkoutLogCreateManyUserInput = {
@@ -11269,7 +11265,7 @@ export namespace Prisma {
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     times?: ExerciseTimeUpdateManyWithoutExerciseLogNestedInput
     workoutLog?: WorkoutLogUpdateOneWithoutExerciseLogsNestedInput
-    exercise?: ExerciseUpdateManyWithoutExerciseLogNestedInput
+    exercise?: ExerciseUpdateOneWithoutExerciseLogsNestedInput
   }
 
   export type ExerciseLogUncheckedUpdateWithoutUserInput = {
@@ -11278,8 +11274,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     workoutLogId?: NullableIntFieldUpdateOperationsInput | number | null
+    exerciseId?: NullableIntFieldUpdateOperationsInput | number | null
     times?: ExerciseTimeUncheckedUpdateManyWithoutExerciseLogNestedInput
-    exercise?: ExerciseUncheckedUpdateManyWithoutExerciseLogNestedInput
   }
 
   export type ExerciseLogUncheckedUpdateManyWithoutUserInput = {
@@ -11288,6 +11284,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     workoutLogId?: NullableIntFieldUpdateOperationsInput | number | null
+    exerciseId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type WorkoutLogUpdateWithoutUserInput = {
@@ -11329,7 +11326,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     times?: IntFieldUpdateOperationsInput | number
     iconPath?: StringFieldUpdateOperationsInput | string
-    exerciseLog?: ExerciseLogUpdateOneWithoutExerciseNestedInput
+    exerciseLogs?: ExerciseLogUpdateManyWithoutExerciseNestedInput
   }
 
   export type ExerciseUncheckedUpdateWithoutWorkoutsInput = {
@@ -11339,7 +11336,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     times?: IntFieldUpdateOperationsInput | number
     iconPath?: StringFieldUpdateOperationsInput | string
-    exerciseLogId?: NullableIntFieldUpdateOperationsInput | number | null
+    exerciseLogs?: ExerciseLogUncheckedUpdateManyWithoutExerciseNestedInput
   }
 
   export type ExerciseUncheckedUpdateManyWithoutWorkoutsInput = {
@@ -11349,7 +11346,6 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     times?: IntFieldUpdateOperationsInput | number
     iconPath?: StringFieldUpdateOperationsInput | string
-    exerciseLogId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type WorkoutLogUpdateWithoutWorkoutInput = {
@@ -11377,6 +11373,15 @@ export namespace Prisma {
     userId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type ExerciseLogCreateManyExerciseInput = {
+    id?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    isCompleted?: boolean
+    userId?: number | null
+    workoutLogId?: number | null
+  }
+
   export type WorkoutUpdateWithoutExercisesInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11399,6 +11404,34 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ExerciseLogUpdateWithoutExerciseInput = {
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    times?: ExerciseTimeUpdateManyWithoutExerciseLogNestedInput
+    user?: UserUpdateOneWithoutExerciseLogsNestedInput
+    workoutLog?: WorkoutLogUpdateOneWithoutExerciseLogsNestedInput
+  }
+
+  export type ExerciseLogUncheckedUpdateWithoutExerciseInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    workoutLogId?: NullableIntFieldUpdateOperationsInput | number | null
+    times?: ExerciseTimeUncheckedUpdateManyWithoutExerciseLogNestedInput
+  }
+
+  export type ExerciseLogUncheckedUpdateManyWithoutExerciseInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isCompleted?: BoolFieldUpdateOperationsInput | boolean
+    userId?: NullableIntFieldUpdateOperationsInput | number | null
+    workoutLogId?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type ExerciseTimeCreateManyExerciseLogInput = {
     id?: number
     createdAt?: Date | string
@@ -11406,15 +11439,6 @@ export namespace Prisma {
     weight?: number
     repeat?: number
     isCompleted?: boolean
-  }
-
-  export type ExerciseCreateManyExerciseLogInput = {
-    id?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    name: string
-    times: number
-    iconPath: string
   }
 
   export type ExerciseTimeUpdateWithoutExerciseLogInput = {
@@ -11443,40 +11467,13 @@ export namespace Prisma {
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type ExerciseUpdateWithoutExerciseLogInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    times?: IntFieldUpdateOperationsInput | number
-    iconPath?: StringFieldUpdateOperationsInput | string
-    workouts?: WorkoutUpdateManyWithoutExercisesNestedInput
-  }
-
-  export type ExerciseUncheckedUpdateWithoutExerciseLogInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    times?: IntFieldUpdateOperationsInput | number
-    iconPath?: StringFieldUpdateOperationsInput | string
-    workouts?: WorkoutUncheckedUpdateManyWithoutExercisesNestedInput
-  }
-
-  export type ExerciseUncheckedUpdateManyWithoutExerciseLogInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    name?: StringFieldUpdateOperationsInput | string
-    times?: IntFieldUpdateOperationsInput | number
-    iconPath?: StringFieldUpdateOperationsInput | string
-  }
-
   export type ExerciseLogCreateManyWorkoutLogInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     isCompleted?: boolean
     userId?: number | null
+    exerciseId?: number | null
   }
 
   export type ExerciseLogUpdateWithoutWorkoutLogInput = {
@@ -11485,7 +11482,7 @@ export namespace Prisma {
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     times?: ExerciseTimeUpdateManyWithoutExerciseLogNestedInput
     user?: UserUpdateOneWithoutExerciseLogsNestedInput
-    exercise?: ExerciseUpdateManyWithoutExerciseLogNestedInput
+    exercise?: ExerciseUpdateOneWithoutExerciseLogsNestedInput
   }
 
   export type ExerciseLogUncheckedUpdateWithoutWorkoutLogInput = {
@@ -11494,8 +11491,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    exerciseId?: NullableIntFieldUpdateOperationsInput | number | null
     times?: ExerciseTimeUncheckedUpdateManyWithoutExerciseLogNestedInput
-    exercise?: ExerciseUncheckedUpdateManyWithoutExerciseLogNestedInput
   }
 
   export type ExerciseLogUncheckedUpdateManyWithoutWorkoutLogInput = {
@@ -11504,6 +11501,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     isCompleted?: BoolFieldUpdateOperationsInput | boolean
     userId?: NullableIntFieldUpdateOperationsInput | number | null
+    exerciseId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 
