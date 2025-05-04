@@ -143,7 +143,36 @@ exports.Prisma.ExerciseScalarFieldEnum = {
   updatedAt: 'updatedAt',
   name: 'name',
   times: 'times',
-  iconPath: 'iconPath'
+  iconPath: 'iconPath',
+  exerciseLogId: 'exerciseLogId'
+};
+
+exports.Prisma.ExerciseLogScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isCompleted: 'isCompleted',
+  userId: 'userId',
+  workoutLogId: 'workoutLogId'
+};
+
+exports.Prisma.ExerciseTimeScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  weight: 'weight',
+  repeat: 'repeat',
+  isCompleted: 'isCompleted',
+  exerciseLogId: 'exerciseLogId'
+};
+
+exports.Prisma.WorkoutLogScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  isCompleted: 'isCompleted',
+  userId: 'userId',
+  workoutId: 'workoutId'
 };
 
 exports.Prisma.SortOrder = {
@@ -156,11 +185,19 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
   Workout: 'Workout',
-  Exercise: 'Exercise'
+  Exercise: 'Exercise',
+  ExerciseLog: 'ExerciseLog',
+  ExerciseTime: 'ExerciseTime',
+  WorkoutLog: 'WorkoutLog'
 };
 
 /**
