@@ -130,6 +130,22 @@ exports.Prisma.UserScalarFieldEnum = {
   images: 'images'
 };
 
+exports.Prisma.WorkoutScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  name: 'name'
+};
+
+exports.Prisma.ExerciseScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  name: 'name',
+  times: 'times',
+  iconPath: 'iconPath'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -142,7 +158,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Workout: 'Workout',
+  Exercise: 'Exercise'
 };
 
 /**
